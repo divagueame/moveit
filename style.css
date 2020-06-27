@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Passion+One:wght@700&family=Poiret+One&family=Squada+One&display=swap');
+
+*, body{
+    box-sizing: border-box;
+    margin: 0;
+    top: 0;
+    left: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'Poiret One';
+
+}
+body {
+    overflow-y: hidden;
+}
+h1, h2 {
+    /* font-size: 9em; */
+    /* background-color: beige; */
+    font-family: 'Bungee';
+    font-family: 'Passion One';
+    font-family: 'Poiret One';
+    /* font-family: 'Squada One' */
+}
+.wrapper {
+    background: rgb(231,208,90);
+    background: linear-gradient(90deg, rgba(231,208,90,1) 0%, rgb(255, 247, 136) 100%); 
+    width: 100%;
+    box-sizing: border-box;
+    border: solid .4em white;
+    overflow-y: hidden;
+}
+
+.hidden {
+    width: 0%;
+    overflow: hidden;
+    transition: 2s all ease;
+}
+
+.time-settings {
+    /* background-color: rgb(51, 184, 11); */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.time-settings > div > div {
+    display: inline-flex;
+    width: 2em;
+    height: 2em;
+    background-repeat: no-repeat;
+    background-size: contain;
+    vertical-align: middle;
+}
+
+.work-rest-time {
+    /* background-color: chartreuse; */
+    display: flex;
+    justify-content: center;
+    
+}
+
+.work-rest-time > div {
+    margin-left: 1em;
+    margin-right: 1em;
+    display: flex;
+    /* justify-content: stretch;
+    border: 3px solid blueviolet;     */
+}
+
+.work-rest-time-disp {
+    margin-left: .4em;
+    margin-right: .4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.work-rest-time-disp > span { 
+    /* background-color: darksalmon; */
+    display: flex;
+    justify-content: center;
+}
+
+.work-time-up, .rest-time-up {
+    margin-top: .2em;
+    background-image: url("./img/icons/plus.svg");
+    width: 1em;
+    height: 1em;
+}
+
+.work-time-down, .rest-time-down {
+    margin-top: .2em;
+    background-image: url("./img/icons/minus.svg");
+    width: 1em;
+    height: 1em;
+}
+
+.control-stop {
+    background-image: url("./img/icons/stop.svg");
+}
+
+.control-play {
+    background-image: url("./img/icons/play.svg");
+}
+
+/* .control-reset {
+    background-image: url("./img/icons/reset.svg");
+} */
+
+.timer-wrap {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    /* background-color: burlywood; */
+}
+.timer-wrap > h4 {
+    text-align: center;
+}
+
+.time-left {
+    height: 1.3em;
+    border-top: solid 1px rgba(231,208,90,1);
+    padding-top: .2em;
+    padding-bottom: .2em;
+    text-align: center;
+    font-size: 7em;
+    background: rgb(231,208,90);
+    background: linear-gradient(180deg, rgb(240, 219, 116) 0%, rgba(255,247,118,1) 100%); 
+}
+
+.scene {
+    width: 480px;
+    height: 320px;
+    perspective: 600px;
+    margin: 0 auto;
+    position: relative;
+    top: 1em;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    transform-origin: center right; 
+  }
+
+  .card__face {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    border: white .3em solid;
+    box-shadow: 0px 10px 10px -10px #111; 
+  }
+
+  .card__face--front {
+  background:  rgba(231,208,90,1);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card__face--back {
+  background:white;
+  transform: rotateY( 180deg );
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.card__face--back > h1 { background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 16%, rgba(255,247,136,1) 95%, rgba(255,252,207,1) 100%); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+.card.is-flipped {
+    transform: rotateY(180deg);
+    transform: translateX(-100%) rotateY(-180deg);
+  }
+
+
+.control-buttons, .work-time, .rest-time {
+    padding: .4em;
+}
+
+  .control-stop:hover, .control-play:hover, .control-reset:hover {
+      cursor: pointer;
+      transform: scale(1.27);
+      transition: ease-in-out all 0.2s;
+  }

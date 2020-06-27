@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Fitty Kitty</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- <h1>Fitty Kitty</h1> -->
+    <div class="wrapper">
+        <div class="scene">
+            <div class="card">
+              <div class="card__face card__face--front"></div>
+              <div class="card__face card__face--back">
+                  <h1>Rest</h1>
+              </div>
+            </div>
+          </div>
+
+        <div class="timer-wrap">
+            <h2 class="time-left"></h2>
+            <!-- <h4>Next exercise in...</h4> -->
+        </div>
+
+        <div class="time-settings">
+            <div class="control-buttons">
+                <div class="control-stop"></div>
+                <div class="control-play"></div>
+                <!-- <div class="control-reset"></div> -->
+            </div>
+        </div>
+            <div class="work-rest-time">
+                <div class="work-time">
+                    <div class="work-time-down"></div>
+                    <div class="work-rest-time-disp">
+                        <h3>Work</h3>
+                        <span id="work-time-setting">10</span>
+                    </div>
+                    <div class="work-time-up"></div>
+                </div>
+                <div class="rest-time">
+                    <div class="rest-time-down"></div>
+                    <div  class="work-rest-time-disp">
+                        <h3>Rest</h3>
+                        <span id="rest-time-setting">61</span>
+                    </div>
+                    <div class="rest-time-up"></div>
+                </div>
+            </div>
+
+    </div>
+        <script src="main.js" async defer></script>
+    </body>
+</html>
