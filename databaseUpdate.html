@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Update it</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- <h1>Move it</h1> -->
+
+        
+    <div class="wrapper">
+        <div class="header">
+            <h1>Update it!</h1>
+        </div>
+        <div class="main">
+            <div class="mainLeft">
+                <h3>Settings</h3>
+            </div>
+            <div class="mainRight">
+                <h3>Active exercise</h3>
+                <div class="activeExercise"></div>
+            </div>
+        </div>
+        </div>
+    </div>
+<div class="form">
+    <input type="value" id="moveName" placeholder="Move name"></input>
+    <input type="value" id="fileNumber" placeholder="File number"></input>
+
+    <select id="moveType" name="type">
+        <option value="core">Core</option>
+        <option value="pushup">Push up</option>
+        <option value="legs">Legs</option>
+        <option value="flow">Flow movement</option>
+        <option value="back">Back</option>
+        <option value="wrist">Wrist</option>
+        <option value="breakdance">Breakdance</option>
+        <option value="handstand">Handstand</option>
+        <option value="ankle">Ankle fix</option>
+        <option value="squat">Squat fix</option>
+        <option value="balance">Balance</option>
+        <option value="dynamicstretching">Dynamic stretching</option>
+        <option value="staticstretching">Static stretching</option>
+      </select> 
+
+      <select id="moveDifficulty" name="difficulty">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select> 
+
+      <button id="postData">Update move!</button>
+</div>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+
+    
+        <script src="dbUpdate.js" async defer></script>
+    </body>
+</html>

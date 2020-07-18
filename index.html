@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Fitty Kitty</title>
+        <title>Move it</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
@@ -15,56 +15,94 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <!-- <h1>Fitty Kitty</h1> -->
+        <!-- <h1>Move it</h1> -->
     <div class="wrapper">
-        <div class="scene">
-            <div class="card">
-              <div class="card__face card__face--front">
-                  <div class="initial-card-content">
-                      <h3>FittyKitty</h3>
-
-                  </div>
-                  <div class="initial-card-img">
-                      <img src="./img/kittyhead.jpg" class="kittyHead" alt="Fitty Kitty">
-                  </div>
-              </div>
-              <div class="card__face card__face--back">
-                  <h1>Rest</h1>
-              </div>
-            </div>
-          </div>
-
-        <div class="timer-wrap">
-            <h2 class="time-left"></h2>
-            <!-- <h4>Next exercise in...</h4> -->
+        <div class="header">
+            <h1>Move it!</h1>
         </div>
-
-        <div class="time-settings">
-            <div class="control-buttons">
-                <div class="control-stop"></div>
-                <div class="control-play"></div>
-                <!-- <div class="control-reset"></div> -->
+        <div class="mainDisplay">
+            <div class="activeExercise"></div>  
+            <div class="controls">
+                <div class="control">
+                    <div class="play playUrl"></div>
+                    <h2>Go!</h2>
+                </div>     
+                <div class="control">
+                    <div class="stop stopUrl"></div>
+                    <h2>Stop!</h2>
+                </div>
             </div>
+            
         </div>
-        <div class="work-rest-time">
-            <div class="work-time">
-                <div class="work-time-down"></div>
-                <div class="work-rest-time-disp">
-                    <h3>Work</h3>
-                    <span id="work-time-setting">10</span>
+        <div class="main">
+            <div class="mainLeft">
+                <div class="sectionTitle">
+                    <img src="./img/category.svg" alt="category" class="small-icon">
+                    <h3 class="center orange">Categories</h3>
                 </div>
-                <div class="work-time-up"></div>
-            </div>
-            <div class="rest-time">
-                <div class="rest-time-down"></div>
-                <div  class="work-rest-time-disp">
-                    <h3>Rest</h3>
-                    <span id="rest-time-setting">10</span>
+                <div class="btn-all-buttons center">
+                    <button class="btn-2 btn-2c btn-all" id="selectAll">Select all</button>
+                    <button class="btn-2 btn-2c  btn-all" id="unselectAll">Unselect all</button>
                 </div>
-                <div class="rest-time-up"></div>
+
+                <div class="exercisesButtonWrapper">
+
+                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="warmup">Warm up</button>
+                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="balance">Balance</button>
+                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="dynamicstretching">Dynamic stretching</button>
+                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="staticstretching">Static stretching</button>
+                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="core">Core</button>
+                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="pushup">Pushup</button>
+                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="legs">Legs</button>
+                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="flow">Flow</button>
+                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="back">Back</button>
+                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="wrist">Wrist</button>
+                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="breakdance">Breakdance</button>
+                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="handstand">Handstand</button>
+                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="ankle">Ankle fix</button>
+                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="squat">Squat fix</button>
+                    <!-- <button class="btn btn-2 btn-2c hidden"></button> -->
+
+                </div>
+                
             </div>
+            
+            <div class="sectionTitle">
+                <img src="./img/dificulty.svg" alt="category"  class="small-icon">
+                <h3>Difficulty</h3>
+
+               
+        </div>
+        <div class="difficultyButtonWrapper">
+
+            <button class="btn btn-2 btn-2c btn-2-pressed difficultyButton" id="level1">Level 1</button>
+            <button class="btn btn-2 btn-2c btn-2-pressed difficultyButton" id="level2">Level 2</button>
+            <button class="btn btn-2 btn-2c btn-2-pressed difficultyButton" id="level3">Level 3</button>
+            <button class="btn btn-2 btn-2c btn-2-pressed difficultyButton" id="level4">Level 4</button>
+            <button class="btn btn-2 btn-2c btn-2-pressed difficultyButton" id="level5">Level 5</button>
+        <!-- <img src="./img/level1icon.png" alt="category" class="small-icon">
+        <img src="./img/level2icon.png" alt="category" class="small-icon">
+        <img src="./img/level3icon.png" alt="category" class="small-icon">
+        <img src="./img/level4icon.png" alt="category" class="small-icon">
+        <img src="./img/level5icon.png" alt="category" class="small-icon"> -->
+        
+    </div>
         </div>
     </div>
+    
+
+</div>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+
+
+    
         <script src="main.js" async defer></script>
     </body>
 </html>

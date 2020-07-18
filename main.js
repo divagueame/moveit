@@ -1,102 +1,175 @@
-let card = document.querySelector('.card');
-let wrapper = document.querySelector('.wrapper');
+  const header = document.querySelector(".header");
+  const activeExercise = document.querySelector(".activeExercise");
 
-let startButton = document.querySelector('.control-play');
-const workTimeSetting = document.querySelector("#work-time-setting");
-const restTimeSetting = document.querySelector("#rest-time-setting");
-const timeLeftDOM = document.querySelector(".time-left");
+  let exercisesState = {
+    warmup: true,
+    balance: true,
+    dynamicstretching: true,
+    staticstretching: true,
+    core: true,
+    pushup: true,
+    legs: true,
+    flow: true,
+    back: true,
+    wrist: true,
+    breakdance: true,
+    handstand: true,
+    ankle: true,
+    squat: true
+  };
 
 
 
+//SELECT ALL BUTTONS
+  const selectAll = document.querySelector("#selectAll");
+  const unselectAll = document.querySelector("#unselectAll");
+  selectAll.addEventListener('click', function(){
+    let exercisesButtons = document.querySelectorAll(".typeButton");
+    exercisesButtons.forEach(function(thisExercise){
+      let exType = thisExercise.id; 
+      exercisesState[exType] = true;
+      thisExercise.classList.add("btn-2-pressed");
+      })
+  });
+  unselectAll.addEventListener('click', function(){
+    let exercisesButtons = document.querySelectorAll(".typeButton");
+    exercisesButtons.forEach(function(thisExercise){
+      exercisesState[thisExercise.id] = false;
+      thisExercise.classList.remove("btn-2-pressed");
+      })
+  });
 
-//// TIME SETTINGS
-const workButtonAdd= document.querySelector(".work-time-up");
-const workButtonSub= document.querySelector(".work-time-down");
-const restButtonAdd= document.querySelector(".rest-time-up");
-const restButtonSub= document.querySelector(".rest-time-down");
-
-workButtonAdd.addEventListener("click", function(){
-  workTimeSetting.innerHTML = parseInt(workTimeSetting.innerHTML) + 5;
-  workButtonAdd.classList.toggle("clicked-button");
-  setTimeout(function(){
-    workButtonAdd.classList.toggle("clicked-button");
-  },150)
+const exercisesButtons = document.querySelectorAll(".typeButton");
+exercisesButtons.forEach(function(thisExercise){
+  thisExercise.addEventListener("click", function(){
+    thisExercise.classList.toggle("btn-2-pressed");
+    let exType = thisExercise.id; 
+    toggleExerciseState(exType);    
+  })
+  
 });
 
-workButtonSub.addEventListener("click", function(){
-  if(workTimeSetting.innerHTML>0){
-  workTimeSetting.innerHTML -= 5;
-  }
-  workButtonSub.classList.toggle("clicked-button");
-  setTimeout(function(){
-    workButtonSub.classList.toggle("clicked-button");
-  },150)
-});
+function toggleExerciseState(exerciseType){
+  exercisesState[exerciseType] = !exercisesState[exerciseType];
+};
 
-restButtonAdd.addEventListener("click", function(){
-  restTimeSetting.innerHTML = parseInt(restTimeSetting.innerHTML) + 5;
-  restButtonAdd.classList.toggle("clicked-button");
-  setTimeout(function(){
-    restButtonAdd.classList.toggle("clicked-button");
-  },150)
-});
-
-restButtonSub.addEventListener("click", function(){
-  if(workTimeSetting.innerHTML>0){
-  restTimeSetting.innerHTML -= 5;
-  restButtonSub.classList.toggle("clicked-button");
-  setTimeout(function(){
-    restButtonSub.classList.toggle("clicked-button");
-  },150)
-  }
-});
-
-
-startButton.addEventListener("click", startTimer)
-
-
-function startTimer(){
-  timeLeftDOM.innerHTML = workTimeSetting.innerHTML;
-  let work = setInterval(function(){
-    if(timeLeftDOM.innerHTML == 0){
-      clearInterval(work);
-      timeLeftDOM.innerHTML = restTimeSetting.innerHTML;
-      startRest();
-      card.classList.toggle('is-flipped');
-    } else {
-    timeLeftDOM.innerHTML -= 1;
-  }
-
-  },1000);
+//Difficulty settings
+let difficultyState = {
+  1: true,
+  2: true,
+  3: true,
+  4: true,
+  5: true,
 }
 
-
-
-function startRest(){
- let rest = setInterval(function(){
-    if(timeLeftDOM.innerHTML == 0){
-      clearInterval(rest);
-      timeLeftDOM.innerHTML = workTimeSetting.innerHTML;
-      updateExercise();
-      startTimer();
-      card.classList.toggle('is-flipped');
-    } else {
-    timeLeftDOM.innerHTML -= 1;
-  
-  }
-
-  },1000);
-  
+function toggleDifficultyState(difficulty){
+  difficultyState[difficulty] = !difficultyState[difficulty];
 }
 
+const difficultyButtons = document.querySelectorAll(".difficultyButton");
+difficultyButtons.forEach(function(thisDifficulty){
+  thisDifficulty.addEventListener("click", function(){
+    thisDifficulty.classList.toggle("btn-2-pressed");
+    let exDifficulty = thisDifficulty.id; 
+    exDifficulty = exDifficulty.substring(5,6);
+    toggleDifficultyState(exDifficulty);    
+  })
+});
 
-function updateExercise(){
-  let totalCards = 7;
-  let chooseRandomCard = Math.floor(totalCards*Math.random())+1;
-  console.log(chooseRandomCard)
-  let cardFaceFront = document.querySelector(".card__face--front");
-  cardFaceFront.innerHTML = "";
-  cardFaceFront.style.backgroundImage = `url('./img/kitty${chooseRandomCard}.jpg')`; 
+/////////////////////////////////////////////////////
 
+  header.addEventListener("click", function(){
+
+    //GET CURRENT ACTIVE TYPES ON AN ARRAY
+    function filterActive(){
+      let filtered = [];
+      Object.entries(exercisesState).forEach(function(entry){
+        if(entry[1]){
+          filtered.push(entry[0])
+        }
+      });
+      return filtered
+    }
+
+//GET CURRENT ACTIVE DIFFICULTIES ON AN ARRAY
+    function filterDifficulty(){
+      let currentDifficulty = [];
+      Object.entries(difficultyState).forEach(function(entry){
+        if(entry[1]){
+          currentDifficulty.push(entry[0])
+        }
+      });
+      return currentDifficulty
+    }
+    
+    // let filteredExercises = 
+    getSuitableExercises(filterDifficulty(),filterActive());
+
+  })
+
+  function updateExercise(newPictureNumber){
+      activeExercise.style.backgroundImage = `url('./img/gif/Move${newPictureNumber}.gif')`; 
+  };
+
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAWXNITaTE-w2bicM1ZXrAJzvL8QCdGufE",
+    authDomain: "moveit-ef28b.firebaseapp.com",
+    databaseURL: "https://moveit-ef28b.firebaseio.com",
+    projectId: "moveit-ef28b",
+    storageBucket: "moveit-ef28b.appspot.com",
+    messagingSenderId: "480396767290",
+    appId: "1:480396767290:web:933d80a80e7a634b6a8503",
+    measurementId: "G-41HYL0FHPS"
+  };
+
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  var database = firebase.database();
   
+ function getSuitableExercises(difficulty, type){
+  let retrievedMoves;
+  let suitableExercises = []; //Should return an array of the image numbers
+  
+  function addSuitable(numberToAdd){
+    suitableExercises.push(numberToAdd);
+  }
+
+let rootRef = database.ref('/');
+rootRef.once('value', async function(snapshot){
+    
+    retrievedMoves = snapshot.val();
+    console.log("inside db",retrievedMoves)
+    // return retrievedMoves;
+
+
+  Object.values(retrievedMoves).forEach(exercise => {
+      
+    let gifNum = exercise.fileNumber;
+    let thisType = exercise.moveType;
+    let thisDifficulty = exercise.moveDifficulty;
+    
+    let difficultyCheck = difficulty.some(function(e){
+      if(thisDifficulty[0]==e){return true}
+    });
+  
+    let typeCheck =  type.some(function(e){
+      if(thisType==e){return true}
+      });
+      
+    if (difficultyCheck&&typeCheck){   
+      addSuitable(parseInt(gifNum));
+    }
+  });
+  console.log("INSIDE ",suitableExercises);
+  
+  
+    let randomSuitable =  Math.floor(Math.random()*(suitableExercises.length))+1;
+    // console.log("Showing ", suitableExercises[randomSuitable])
+    updateExercise(suitableExercises[randomSuitable]);
+
+  })
 }
