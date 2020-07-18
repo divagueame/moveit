@@ -1,16 +1,18 @@
   const header = document.querySelector(".header");
   const activeExercise = document.querySelector(".activeExercise");
+let initialPic = 1;
 
-
-  header.addEventListener("click", function(){
-    newMove()
-  })
+  // header.addEventListener("click", function(){
+  //   newMove()
+  // })
 
 function newMove(){
-  let randomNum = Math.floor(Math.random()*200)+1;
+  // let randomNum = Math.floor(Math.random()*200)+1;
   document.querySelector("#moveName").value="";
-  document.querySelector("#fileNumber").value=randomNum;
-  updateExercise(randomNum)
+  document.querySelector("#fileNumber").value=initialPic;
+  updateExercise(initialPic);
+  console.log(initialPic)
+  initialPic++
 }
 
 
@@ -64,3 +66,5 @@ function newMove(){
 
 
 
+
+  newMove()
