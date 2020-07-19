@@ -173,3 +173,19 @@ rootRef.once('value', async function(snapshot){
 
   })
 }
+
+
+
+// COLLAPSING STUFF
+
+const categoryBtn = document.querySelector("#categoryBtn");
+const categoryContentBtn = document.querySelector("#categoryContentBtn");
+categoryBtn.addEventListener("mousedown", function(){
+  categoryContentBtn.classList.toggle("hiddenBar");
+})
+
+const difficultyBtn = document.querySelector("#difficultyBtn");
+const difficultyContentBtn = document.querySelector("#difficultyContentBtn");
+difficultyBtn.addEventListener("mousedown", function(){
+  difficultyContentBtn.classList.toggle("hiddenBar");
+})

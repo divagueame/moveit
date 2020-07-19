@@ -1,6 +1,6 @@
   const header = document.querySelector(".header");
   const activeExercise = document.querySelector(".activeExercise");
-let initialPic = 1;
+let initialPic = 100;
 
   // header.addEventListener("click", function(){
   //   newMove()

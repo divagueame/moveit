@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>B Move it</title>
+        <title>Move it</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style.css">
@@ -24,11 +24,15 @@
             <div class="activeExercise"></div>  
             <div class="controls">
                 <div class="control">
-                    <div class="play playUrl"></div>
+                    <div class="playWrapper">
+                        <div class="play playUrl"></div>
+                    </div>
                     <h2>Go!</h2>
                 </div>     
                 <div class="control">
-                    <div class="stop stopUrl"></div>
+                    <div class="playWrapper">
+                        <div class="stop stopUrl"></div>
+                    </div>
                     <h2>Stop!</h2>
                 </div>
             </div>
@@ -36,57 +40,86 @@
         </div>
         <div class="main">
             <div class="mainLeft">
-                <div class="sectionTitle">
+                <div class="sectionTitle" id="settingsBtn">
+                    <img src="./img/settings.svg" alt="settings" class="small-icon">
+                    <h3 class="center orange">Settings</h3>
+                </div>
+                <div class="sectionContent">
+                    <div class="currentSettings">
+                        <div class="settingRounds btn">3 rounds</div>
+                        <div class="settingWorktime btn">45</div>
+                        <div class="settingRest btn">22</div>
+                    </div>
+                    <div class="settingsButtonWrapper">
+                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="moreRounds">+ Rounds</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="lessRounds">- Rounds</button>
+
+                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="moreWork">+ Worktime</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="lessWork">- Worktime</button>
+
+                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="moreRest">+ Rest</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="lessRest">- Rest</button>
+                </div>
+
+                <div class="sectionTitle" id="categoryBtn">
                     <img src="./img/category.svg" alt="category" class="small-icon">
                     <h3 class="center orange">Categories</h3>
                 </div>
-                <div class="btn-all-buttons center">
-                    <button class="btn-2 btn-2c btn-all" id="selectAll">Select all</button>
-                    <button class="btn-2 btn-2c  btn-all" id="unselectAll">Unselect all</button>
+                <div class="sectionContent" id="categoryContentBtn">
+                    <div class="btn-all-buttons center">
+                        <button class="btn-2 btn-2c btn-all" id="selectAll">Select all</button>
+                        <button class="btn-2 btn-2c btn-all" id="unselectAll">Unselect all</button>
+                    </div>
+                    <div class="exercisesButtonWrapper">
+                        <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="warmup">Warm up</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="balance">Balance</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="dynamicstretching">Dynamic stretching</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="staticstretching">Static stretching</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="core">Core</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="pushup">Pushup</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="legs">Legs</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="flow">Flow</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="back">Back</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="wrist">Wrist</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="breakdance">Breakdance</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="handstand">Handstand</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="ankle">Ankle fix</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="squat">Squat fix</button>
+                    </div>
                 </div>
-
-                <div class="exercisesButtonWrapper">
-
-                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="warmup">Warm up</button>
-                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="balance">Balance</button>
-                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="dynamicstretching">Dynamic stretching</button>
-                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="staticstretching">Static stretching</button>
-                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="core">Core</button>
-                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="pushup">Pushup</button>
-                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="legs">Legs</button>
-                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="flow">Flow</button>
-                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="back">Back</button>
-                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="wrist">Wrist</button>
-                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="breakdance">Breakdance</button>
-                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="handstand">Handstand</button>
-                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="ankle">Ankle fix</button>
-                    <button class="btn btn-2 btn-2c btn-2-pressed typeButton" id="squat">Squat fix</button>
-                    <!-- <button class="btn btn-2 btn-2c hidden"></button> -->
-
-                </div>
-                
             </div>
             
-            <div class="sectionTitle">
+        <div class="sectionTitle " id="difficultyBtn">
                 <img src="./img/dificulty.svg" alt="category"  class="small-icon">
                 <h3>Difficulty</h3>
-
-               
         </div>
-        <div class="difficultyButtonWrapper">
+        <div class="difficultyContentBtn" id="difficultyContentBtn">
+            <div class="difficultyButtonWrapper">
 
-            <button class="btn btn-2 btn-2c btn-2-pressed difficultyButton" id="level1">Level 1</button>
-            <button class="btn btn-2 btn-2c btn-2-pressed difficultyButton" id="level2">Level 2</button>
-            <button class="btn btn-2 btn-2c btn-2-pressed difficultyButton" id="level3">Level 3</button>
-            <button class="btn btn-2 btn-2c btn-2-pressed difficultyButton" id="level4">Level 4</button>
-            <button class="btn btn-2 btn-2c btn-2-pressed difficultyButton" id="level5">Level 5</button>
-        <!-- <img src="./img/level1icon.png" alt="category" class="small-icon">
-        <img src="./img/level2icon.png" alt="category" class="small-icon">
-        <img src="./img/level3icon.png" alt="category" class="small-icon">
-        <img src="./img/level4icon.png" alt="category" class="small-icon">
-        <img src="./img/level5icon.png" alt="category" class="small-icon"> -->
-        
-    </div>
+                <button class="btn btn-2 btn-2c btn-2-pressed difficultyButton" id="level1">
+                    <img src="./img/level1icon.png" alt="category" class="small-icon">
+                    Level 1
+                </button>
+                <button class="btn btn-2 btn-2c btn-2-pressed difficultyButton" id="level2">
+                    <img src="./img/level2icon.png" alt="category" class="small-icon">
+                    Level 2
+                </button>
+                <button class="btn btn-2 btn-2c btn-2-pressed difficultyButton" id="level3">
+                    <img src="./img/level3icon.png" alt="category" class="small-icon">
+                    Level 3
+                </button>
+                <button class="btn btn-2 btn-2c btn-2-pressed difficultyButton" id="level4">
+                    <img src="./img/level4icon.png" alt="category" class="small-icon">
+                    Level 4
+                </button>
+                <button class="btn btn-2 btn-2c btn-2-pressed difficultyButton" id="level5">
+                    <img src="./img/level5icon.png" alt="category" class="small-icon">
+                    Level 5
+                </button>
+                
+            
+            </div>
+        </div>
         </div>
     </div>
     
