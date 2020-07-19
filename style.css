@@ -337,11 +337,50 @@ transition: ease-in .4s all;
     display: flex;
     justify-content: center;
     align-items: center;
+	color: inherit;
+	background: none;
+    padding: .3em .71em;
+    
+	/* margin: .3em .15em; */
+	font-weight: 700;
+    outline: none;
+    
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+    transition: all 0.3s;
+    flex-grow: 1;
+    flex-basis: auto;
+    flex-shrink: 0;
+    
+
+
+    border: none;
+    padding: .3em .71em;
+	margin: .3em .15em;
+	text-transform: uppercase;
+    letter-spacing: .03em;
+	font-weight: 700;
+    outline: none;
+    
 }
+.currentSettings:after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
 .currentSettings > * {
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+    padding: .5em;
+    background-color: rgb(255, 226, 226);
+    margin: .2em;
+    border-radius: 5px;
+    border: 2px black solid;
 }
 
 @media only screen   
