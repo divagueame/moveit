@@ -41,7 +41,7 @@
 
 const exercisesButtons = document.querySelectorAll(".typeButton");
 exercisesButtons.forEach(function(thisExercise){
-  thisExercise.addEventListener("click", function(){
+  thisExercise.addEventListener("mousedown", function(){
     thisExercise.classList.toggle("btn-2-pressed");
     let exType = thisExercise.id; 
     toggleExerciseState(exType);    
