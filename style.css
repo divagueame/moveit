@@ -164,13 +164,13 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .btn:hover {
-    background: #881f1f;
+    /* background: #881f1f; */
 	box-shadow: 0px 4px #4e1212;
 	/* top: 2px; */
 }
 
 .btn-2c:active {
-    box-shadow: 0 0 #4b1414;
+    /* box-shadow: 0 0 #4b1414; */
     top: 2px;
 }
 
