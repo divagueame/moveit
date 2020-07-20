@@ -44,23 +44,45 @@
                     <img src="./img/settings.svg" alt="settings" class="small-icon">
                     <h3 class="center orange">Settings</h3>
                 </div>
-                <div class="sectionContent">
-                    <div class="currentSettings">
-                        <div class="settingRounds">3 rounds</div>
-                        <div class="settingWorktime">45'</div>
-                        <div class="settingRest">22'</div>
+                <div class="settingsContentBtn"><div class="settingsToggleable">
+                    <div class="settingsButtonWrapper totalWrapper">
+                    <button class="settingsBtn" id="">Total: <span id="totalDisplay"></span></button>
                     </div>
                     <div class="settingsButtonWrapper">
-                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="moreRounds">+ Rounds</button>
-                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="lessRounds">- Rounds</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="roundsDown">
+                            <div class="arrow arrowDown"></div>
+                        </button>
 
-                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="moreWork">+ Worktime</button>
-                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="lessWork">- Worktime</button>
+                        <button class="settingsBtn" id=""><span id="roundsDisplay"></span> rounds</button>
 
-                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="moreRest">+ Rest</button>
-                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="lessRest">- Rest</button>
+                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="roundsUp">
+                            <div class="arrow arrowUp"></div>
+                        </button>
                 </div>
 
+                        <div class="settingsButtonWrapper">
+                            <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="workDown">
+                                <div class="arrow arrowDown"></div>
+                            </button>
+
+                            <button class="settingsBtn" id=""><span id="workDisplay"></span> work</button>
+                            
+                            <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="workUp">
+                                <div class="arrow arrowUp"></div>
+                            </button>
+                    </div>
+                    <div class="settingsButtonWrapper">
+                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="restDown">
+                            <div class="arrow arrowDown"></div>
+                        </button>
+
+                        <button class="settingsBtn" id=""><span id="restDisplay"></span>  Rest</button>
+                        
+                        <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="restUp">
+                            <div class="arrow arrowUp"></div>
+                        </button>
+                </div>
+            </div>
                 <div class="sectionTitle" id="categoryBtn">
                     <img src="./img/category.svg" alt="category" class="small-icon">
                     <h3 class="center orange">Categories</h3>

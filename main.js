@@ -1,6 +1,105 @@
   const header = document.querySelector(".header");
   const activeExercise = document.querySelector(".activeExercise");
 
+
+  /// Settings functionality
+let settingsState = {
+  rounds: 3,
+  work: 60,
+  rest: 60
+}
+
+//Total display
+const totalDisplay = document.querySelector("#totalDisplay")
+// Rounds settings
+const roundsDown = document.querySelector("#roundsDown");
+const roundsUp = document.querySelector("#roundsUp");
+const roundsDisplay = document.querySelector("#roundsDisplay");
+
+
+roundsDown.addEventListener('mousedown', function(){
+  if(settingsState.rounds>0){
+    settingsState.rounds--;
+    
+    updateSettingsDisplay()
+  };
+})
+
+roundsUp.addEventListener('mousedown', function(){
+    settingsState.rounds++;
+    updateSettingsDisplay()
+});
+
+function updateSettingsDisplay(){
+  let total = settingsState.rounds*(settingsState.work+settingsState.rest);
+  total = toMinutes(total)
+  totalDisplay.innerHTML=total;
+  roundsDisplay.innerHTML = settingsState.rounds;
+  workDisplay.innerHTML = toMinutes(settingsState.work);
+  restDisplay.innerHTML = toMinutes(settingsState.rest);
+};
+
+function toMinutes(sourceNum){
+  var time = parseInt(sourceNum, 10); // don't forget the second param
+    var hours   = Math.floor(time / 3600);
+    var minutes = Math.floor((time - (hours * 3600)) / 60);
+    var seconds = time - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    
+    if(hours>0){
+      time = hours+':'+minutes+':'+seconds;
+    } else {
+      time = minutes+':'+seconds;
+    }
+    // console.log(time)
+  return time
+};
+
+// Work time settings
+const workDown = document.querySelector("#workDown");
+const workUp = document.querySelector("#workUp");
+const workDisplay = document.querySelector("#workDisplay");
+
+workDown.addEventListener('mousedown', function(){
+  if(settingsState.work>0){
+    updateSettingsDisplay()
+    settingsState.work-= 5;
+  };
+})
+
+workUp.addEventListener('mousedown', function(){
+  updateSettingsDisplay()
+  settingsState.work+= 5;
+});
+
+
+// Rest time settings
+const restDown = document.querySelector("#restDown");
+const restUp = document.querySelector("#restUp");
+const restDisplay = document.querySelector("#restDisplay");
+
+restDown.addEventListener('mousedown', function(){
+  if(settingsState.rest>0){
+    updateSettingsDisplay()
+    settingsState.rest-= 5;
+  };
+})
+
+restUp.addEventListener('mousedown', function(){
+  updateSettingsDisplay()
+  settingsState.rest+= 5;
+});
+
+
+updateSettingsDisplay();
+
+
+
+
+//// Exercises selection
   let exercisesState = {
     warmup: true,
     balance: true,
@@ -177,6 +276,11 @@ rootRef.once('value', async function(snapshot){
 
 
 // COLLAPSING STUFF
+const settingsBtn = document.querySelector("#settingsBtn");
+const settingsToggleable = document.querySelector(".settingsToggleable");
+settingsBtn.addEventListener("mousedown", function(){
+  settingsToggleable.classList.toggle("hiddenBar");
+})
 
 const categoryBtn = document.querySelector("#categoryBtn");
 const categoryContentBtn = document.querySelector("#categoryContentBtn");
