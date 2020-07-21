@@ -292,18 +292,34 @@ rootRef.once('value', async function(snapshot){
 // COLLAPSING STUFF
 const settingsBtn = document.querySelector("#settingsBtn");
 const settingsToggleable = document.querySelector(".settingsToggleable");
+const roundsCollapse = document.querySelector("#roundsCollapse");
+
 settingsBtn.addEventListener("mousedown", function(){
+  roundsCollapse.classList.toggle("collapseMinus");
   settingsToggleable.classList.toggle("hiddenBar");
-})
+});
+
 
 const categoryBtn = document.querySelector("#categoryBtn");
 const categoryContentBtn = document.querySelector("#categoryContentBtn");
+const categoryCollapse = document.querySelector("#categoryCollapse");
+
 categoryBtn.addEventListener("mousedown", function(){
+  categoryCollapse.classList.toggle("collapseMinus");
   categoryContentBtn.classList.toggle("hiddenBar");
 })
 
 const difficultyBtn = document.querySelector("#difficultyBtn");
 const difficultyContentBtn = document.querySelector("#difficultyContentBtn");
+const difficultyCollapse = document.querySelector("#difficultyCollapse");
+
 difficultyBtn.addEventListener("mousedown", function(){
+  difficultyCollapse.classList.toggle("collapseMinus");
   difficultyContentBtn.classList.toggle("hiddenBar");
+})
+
+
+const playWrapper = document.querySelector(".playWrapper");
+playWrapper.addEventListener('mousedown', function(){
+  console.log("yes")
 })

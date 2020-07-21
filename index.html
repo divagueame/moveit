@@ -26,7 +26,7 @@
             <h1>Move it!</h1>
         </div>
         <div class="mainDisplay">
-            <div class="activeExercise"></div>  
+            <div class="activeExercise exerciseHidden"></div>  
             <div class="controls">
                 <div class="control">
                     <div class="playWrapper">
@@ -46,13 +46,13 @@
         <div class="main">
             <div class="mainLeft">
                 <div class="sectionTitle" id="settingsBtn">
-                    <div class="collapsePlus"></div>
+                    <div class="collapsePlus collapseMinus" id="roundsCollapse"></div>
                     <!-- <img src="./img/settings.svg" id="settingsLogo" alt="settings" class="small-icon"> -->
                     <h3 class="center orange settingsText">Round settings</h3>
                 </div>
                 <div class="settingsContentBtn"><div class="settingsToggleable">
                     <div class="settingsButtonWrapper totalWrapper">
-                    <button class="settingsBtn" id="">Total: <span id="totalDisplay"></span></button>
+                    <button class="settingsBtn" id="">Total <span id="totalDisplay"></span></button>
                     </div>
                     <div class="settingsButtonWrapper">
                         <button class="btn btn-2 btn-2c btn-2-pressed settingsButton" id="roundsDown">
@@ -90,7 +90,7 @@
                 </div>
             </div>
                 <div class="sectionTitle" id="categoryBtn">
-                    <div class="collapsePlus"></div>
+                    <div class="collapsePlus collapseMinus" id="categoryCollapse"></div>
                     <!-- <img src="./img/category.svg" alt="category" class="small-icon"> -->
                     <h3 class="center orange settingsText">Categories</h3>
                 </div>
@@ -119,7 +119,7 @@
             </div>
             
         <div class="sectionTitle " id="difficultyBtn">
-            <div class="collapsePlus"></div>
+            <div class="collapsePlus collapseMinus"  id="difficultyCollapse"></div>
                 <!-- <img src="./img/dificulty.svg" alt="category"  class="small-icon"> -->
                 <h3 class="settingsText">Difficulty</h3>
         </div>
@@ -155,7 +155,10 @@
     
 
 </div>
-
+    <div class="bottomLogos">
+        <div class="logos githubLogo"></div>
+        <div class="logos questionLogo"></div>
+    </div>
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
 
