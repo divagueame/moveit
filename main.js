@@ -1,6 +1,23 @@
   const header = document.querySelector(".header");
   const activeExercise = document.querySelector(".activeExercise");
 
+countdown(10);
+
+function countdown(time){
+  const timedownDisplay = document.querySelector("#timedownDisplay");
+  if(time>0){
+  timedownDisplay.innerHTML = time;
+
+  setTimeout(function(){
+    countdown(time-1)
+  }, 1000);
+  } else {
+    timedownDisplay.innerHTML = "GO!";
+    setTimeout(function(){
+
+    },800)
+  }
+}
 
   /// Settings functionality
 let settingsState = {
@@ -241,7 +258,7 @@ let rootRef = database.ref('/');
 rootRef.once('value', async function(snapshot){
     
     retrievedMoves = snapshot.val();
-    console.log("inside db",retrievedMoves)
+    // console.log("inside db",retrievedMoves)
     // return retrievedMoves;
 
 
@@ -263,11 +280,8 @@ rootRef.once('value', async function(snapshot){
       addSuitable(parseInt(gifNum));
     }
   });
-  console.log("INSIDE ",suitableExercises);
-  
   
     let randomSuitable =  Math.floor(Math.random()*(suitableExercises.length))+1;
-    // console.log("Showing ", suitableExercises[randomSuitable])
     updateExercise(suitableExercises[randomSuitable]);
 
   })
