@@ -1,51 +1,36 @@
   const header = document.querySelector(".header");
   const activeExercise = document.querySelector(".activeExercise");
 
-countdown(10);
 
 function countdown(time){
-  const timedownDisplay = document.querySelector("#timedownDisplay");
-  if(time>0){
-  timedownDisplay.innerHTML = time;
+  
+  const timedownDisplay = document.querySelector("#countdownDisplay");
+  if(time>=0){
+  timedownDisplay.innerHTML = toMinutes(time);
 
   setTimeout(function(){
     countdown(time-1)
   }, 1000);
   } else {
-    timedownDisplay.innerHTML = "GO!";
+    timedownDisplay.innerHTML = "";
     setTimeout(function(){
-
-    },800)
+      timedownDisplay.innerHTML = ""
+    },1000)
   }
 }
 
   /// Settings functionality
 let settingsState = {
   rounds: 3,
-  work: 60,
-  rest: 60
+  work: 25,
+  rest: 15,
+  roundsUpdate : null,
+  workUpdate : null,
+  restUpdate : null
 }
 
-//Total display
-const totalDisplay = document.querySelector("#totalDisplay")
-// Rounds settings
-const roundsDown = document.querySelector("#roundsDown");
-const roundsUp = document.querySelector("#roundsUp");
-const roundsDisplay = document.querySelector("#roundsDisplay");
 
-
-roundsDown.addEventListener('mousedown', function(){
-  if(settingsState.rounds>0){
-    settingsState.rounds--;
-    
-    updateSettingsDisplay()
-  };
-})
-
-roundsUp.addEventListener('mousedown', function(){
-    settingsState.rounds++;
-    updateSettingsDisplay()
-});
+//
 
 function updateSettingsDisplay(){
   let total = settingsState.rounds*(settingsState.work+settingsState.rest);
@@ -53,7 +38,7 @@ function updateSettingsDisplay(){
   totalDisplay.innerHTML=total;
   roundsDisplay.innerHTML = settingsState.rounds;
   workDisplay.innerHTML = toMinutes(settingsState.work);
-  restDisplay.innerHTML = toMinutes(settingsState.rest);
+  restDisplay.innerHTML = toMinutes(settingsState.rest)
 };
 
 function toMinutes(sourceNum){
@@ -70,10 +55,31 @@ function toMinutes(sourceNum){
       time = hours+':'+minutes+':'+seconds;
     } else {
       time = minutes+':'+seconds;
-    }
-    // console.log(time)
+    };
   return time
 };
+
+
+//Total display
+const totalDisplay = document.querySelector("#totalDisplay")
+// Rounds settings
+const roundsDown = document.querySelector("#roundsDown");
+const roundsUp = document.querySelector("#roundsUp");
+const roundsDisplay = document.querySelector("#roundsDisplay");
+
+
+roundsDown.addEventListener('mousedown', function(){
+  if(settingsState.rounds>0){
+    settingsState.rounds--;
+    updateSettingsDisplay()
+  };
+});
+
+roundsUp.addEventListener('mousedown', function(){
+    settingsState.rounds++;
+    updateSettingsDisplay()
+});
+
 
 // Work time settings
 const workDown = document.querySelector("#workDown");
@@ -82,14 +88,14 @@ const workDisplay = document.querySelector("#workDisplay");
 
 workDown.addEventListener('mousedown', function(){
   if(settingsState.work>0){
-    updateSettingsDisplay()
     settingsState.work-= 5;
+    updateSettingsDisplay()
   };
 })
 
 workUp.addEventListener('mousedown', function(){
-  updateSettingsDisplay()
   settingsState.work+= 5;
+  updateSettingsDisplay();
 });
 
 
@@ -100,14 +106,14 @@ const restDisplay = document.querySelector("#restDisplay");
 
 restDown.addEventListener('mousedown', function(){
   if(settingsState.rest>0){
-    updateSettingsDisplay()
     settingsState.rest-= 5;
+    updateSettingsDisplay();
   };
 })
 
 restUp.addEventListener('mousedown', function(){
-  updateSettingsDisplay()
   settingsState.rest+= 5;
+  updateSettingsDisplay();
 });
 
 
@@ -194,8 +200,9 @@ difficultyButtons.forEach(function(thisDifficulty){
 
 /////////////////////////////////////////////////////
 
-  header.addEventListener("click", function(){
 
+
+  function showNewExercise(){
     //GET CURRENT ACTIVE TYPES ON AN ARRAY
     function filterActive(){
       let filtered = [];
@@ -221,7 +228,8 @@ difficultyButtons.forEach(function(thisDifficulty){
     // let filteredExercises = 
     getSuitableExercises(filterDifficulty(),filterActive());
 
-  })
+  }
+
 
   function updateExercise(newPictureNumber){
       activeExercise.style.backgroundImage = `url('./img/gif/Move${newPictureNumber}.gif')`; 
@@ -258,9 +266,6 @@ let rootRef = database.ref('/');
 rootRef.once('value', async function(snapshot){
     
     retrievedMoves = snapshot.val();
-    // console.log("inside db",retrievedMoves)
-    // return retrievedMoves;
-
 
   Object.values(retrievedMoves).forEach(exercise => {
       
@@ -319,7 +324,68 @@ difficultyBtn.addEventListener("mousedown", function(){
 })
 
 
+
+
+
+
+////FUNCTION START ROUND
 const playWrapper = document.querySelector(".playWrapper");
-playWrapper.addEventListener('mousedown', function(){
-  console.log("yes")
-})
+const stopWrapper = document.querySelector(".stopWrapper");
+
+const playControl = document.querySelector(".playControl");
+const stopControl = document.querySelector(".stopControl");
+const roundSettingsWrapper =  document.querySelector(".roundSettingsWrapper");
+const categoriesWrapper =  document.querySelector(".categoriesWrapper");
+const difficultyWrapper =  document.querySelector(".difficultyWrapper");
+
+playWrapper.addEventListener('mousedown', startRound);
+
+function startRound(){
+
+  settingsState.roundsUpdate = settingsState.rounds;
+  settingsState.workUpdate = settingsState.work;
+  settingsState.restUpdate = settingsState.rest;
+
+  // countdown(100);
+
+  activeExercise.classList.toggle("displayNone");
+  roundSettingsWrapper.classList.toggle("displayNone");
+  categoriesWrapper.classList.toggle("displayNone");
+  difficultyWrapper.classList.toggle("displayNone");
+  playControl.classList.toggle("displayNone");
+  stopControl.classList.toggle("displayNone");
+
+  showNewExercise()
+setInterval(function(){
+console.log(settingsState)
+if((settingsState.roundsUpdate==0)&&(settingsState.workUpdate==0)&&(settingsState.restUpdate==0 )){
+  console.log("Everything is done! work complete");
+
+} else {
+  if(settingsState.workUpdate>0){ //There's working time left
+    countdown(settingsState.workUpdate)
+    settingsState.workUpdate--;
+  }
+  else if(settingsState.restUpdate>0){ //No more working time. Rest time!
+    clearExercise();
+    console.log("REST NOW")
+    countdown(settingsState.restUpdate);
+    settingsState.restUpdate--  
+  }
+  else if((settingsState.roundsUpdate>0)&&(settingsState.workUpdate==0)&&(settingsState.restUpdate==0 )){ //New Round!
+    console.log("NEW ROUND")
+    settingsState.roundsUpdate--;
+    settingsState.workUpdate = settingsState.work;
+    settingsState.restUpdate = settingsState.rest;
+    showNewExercise()
+  }
+
+  // showNewExercise()
+  // console.log("work not complete")
+}
+},1000)
+
+}
+function clearExercise(){
+  updateExercise('1')
+}

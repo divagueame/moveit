@@ -69,9 +69,30 @@ h1, h2, h3, h4, h5, h6, p {
     height: 203px;
     margin: 0 auto;
     margin-top: .51em;
-    margin-bottom: .51em;
     border-radius: .3em;
+
 }
+.wrapThis {
+    background-color: rgba(255, 255, 255, 0.8);;
+    width: 8em;
+    height: 8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 50%;
+    box-sizing: border-box;
+    padding: 1.42em;
+    border: 3px solid black;
+}
+
+#countdownDisplay{
+    
+    
+    font-family: 'Cormorant Infant', serif;
+    color: #000000;
+}
+
 
 .form {
     background-color: var(--main-txt-color2);
@@ -260,7 +281,7 @@ h1, h2, h3, h4, h5, h6, p {
     height: 2em;
     margin-right: .41em;
 }
-.playWrapper {
+.playWrapper, .stopWrapper {
     border: rgb(255, 255, 255) 3px solid;
     border-radius: 100%;
     padding: 11px;
@@ -292,15 +313,8 @@ h1, h2, h3, h4, h5, h6, p {
     flex-basis: 100%;
     justify-content: center;
     align-items: center;
+    
 }
-.controls {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: burlywood;
-}
-
 .controls > * {
     margin-left: 2em;
     margin-right: 2em;
@@ -311,7 +325,6 @@ h1, h2, h3, h4, h5, h6, p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin
 }
 
 .playWrapper:hover{
@@ -505,33 +518,83 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 
-.exerciseHidden{
+.displayNone{
     display: none  
 }
 
 @media only screen   
 and (min-device-width : 768px)   
 and (max-device-width : 2024px)  {
+
     .wrapper {
-        /* background-color: rgb(172, 28, 28); */
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             flex-wrap: wrap;
-            /* justify-content: space-between; */
+            margin: 0 auto;
+            min-height: 88vh;
+            order: 1
         }  
 
     .main{
-        order: 3;
+        /* order: 3; */
         flex-basis: 23.3%;
+            display: flex;
+            flex-direction: row;
+            width: 82%;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: flex-start;
+            /* max-height: 500px; */
+            /* min-height: 334px; */
+            /* min-height: 91vh; */
+    }
+    .roundSettingsWrapper{
+        width: 25%;
+        order: 3;
+        align-self: flex-start;
     }
 
+    .categoriesWrapper{
+        width: 45%;
+        order: 2    
+    }
+
+    .difficultyWrapper {
+        /* align-self: center; */
+        order: 1;
+        width: 25%;
+    }
+
+.controls {
+    order: 4;
+    /* background-color:none; */
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    justify-content: center;
+    align-items: center;
+    
+}
+.controls > * {
+    margin: 0em;
+}
+
+
+
+
+
     .header{
-        order: 2;
+        /* order: 1; */
         flex-basis: 100%;
     }
 
     .mainDisplay {
-        order: 5;
+        /* order: 5; */
         flex-grow: 3;
     }
     .activeExercise {
@@ -539,5 +602,16 @@ and (max-device-width : 2024px)  {
         height: 406px;
         background-size: cover;
     }
+
+#roundsCollapse, #categoryCollapse, #difficultyCollapse {
+    opacity: 0;
+}
+
+.sectionTitle:hover {
+    cursor: auto;
+    border-left: black 0px solid;
+    border-right: black 0px solid;
+}
+
 }
 
