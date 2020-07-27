@@ -3,19 +3,9 @@
 
 
 function countdown(time){
-  
   const timedownDisplay = document.querySelector("#countdownDisplay");
   if(time>=0){
   timedownDisplay.innerHTML = toMinutes(time);
-
-  setTimeout(function(){
-    countdown(time-1)
-  }, 1000);
-  } else {
-    timedownDisplay.innerHTML = "";
-    setTimeout(function(){
-      timedownDisplay.innerHTML = ""
-    },1000)
   }
 }
 
@@ -341,12 +331,9 @@ const difficultyWrapper =  document.querySelector(".difficultyWrapper");
 playWrapper.addEventListener('mousedown', startRound);
 
 function startRound(){
-
   settingsState.roundsUpdate = settingsState.rounds;
   settingsState.workUpdate = settingsState.work;
   settingsState.restUpdate = settingsState.rest;
-
-  // countdown(100);
 
   activeExercise.classList.toggle("displayNone");
   roundSettingsWrapper.classList.toggle("displayNone");
@@ -355,20 +342,23 @@ function startRound(){
   playControl.classList.toggle("displayNone");
   stopControl.classList.toggle("displayNone");
 
-  showNewExercise()
+  showNewExercise();
+
 setInterval(function(){
-console.log(settingsState)
+// console.log(settingsState);
 if((settingsState.roundsUpdate==0)&&(settingsState.workUpdate==0)&&(settingsState.restUpdate==0 )){
   console.log("Everything is done! work complete");
 
 } else {
   if(settingsState.workUpdate>0){ //There's working time left
+  console.log("WORK NOW: ", settingsState.workUpdate);
     countdown(settingsState.workUpdate)
     settingsState.workUpdate--;
   }
-  else if(settingsState.restUpdate>0){ //No more working time. Rest time!
-    clearExercise();
-    console.log("REST NOW")
+  else if((settingsState.restUpdate>0)&&(settingsState.workUpdate<1)){ //No more working time. Rest time!
+    // clearExercise();
+    console.log("REST NOW: ", settingsState.restUpdate);
+    updateExercise("asasd")
     countdown(settingsState.restUpdate);
     settingsState.restUpdate--  
   }
@@ -386,6 +376,6 @@ if((settingsState.roundsUpdate==0)&&(settingsState.workUpdate==0)&&(settingsStat
 },1000)
 
 }
-function clearExercise(){
-  updateExercise('1')
-}
+// function clearExercise(){
+//   updateExercise('')
+// }
