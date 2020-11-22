@@ -116,6 +116,8 @@ updateSettingsDisplay();
   let exercisesState = {
     warmup: true,
     balance: true,
+    agility: true,
+    shoulders: true,
     dynamicstretching: true,
     staticstretching: true,
     core: true,
